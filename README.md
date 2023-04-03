@@ -5,6 +5,7 @@ Despite the record-breaking performance in Text-to-Image (T2I) generation by Sta
 <p>
 <img src="Image/Fig1.png" width="888" >
 </p>
+
 ## Dependencies
 - PyTorch => 1.13.03
 - transformers >= 4.23.1
