@@ -187,7 +187,7 @@ def forward_embedding(hidden_states,input_shape, model=None, tokenizer=None, tex
     )
     bsz, seq_len = input_shape
     return_dict = text_encoder.text_model.config.use_return_dict
-    causal_attention_mask = text_encoder.text_model._build_causal_attention_mask(bsz, seq_len).to(hidden_states.device)
+    causal_attention_mask = text_encoder.text_model._build_causal_attention_mask(bsz, seq_len, dtype=hidden_states.dtype).to(hidden_states.device)
     attention_mask = None
     encoder_outputs = text_encoder.text_model.encoder(
         inputs_embeds=hidden_states,
@@ -209,7 +209,7 @@ def forward_embedding_no_grad(hidden_states,input_shape, model=None, tokenizer=N
         )
         bsz, seq_len = input_shape
         return_dict = text_encoder.text_model.config.use_return_dict
-        causal_attention_mask = text_encoder.text_model._build_causal_attention_mask(bsz, seq_len).to(hidden_states.device)
+        causal_attention_mask = text_encoder.text_model._build_causal_attention_mask(bsz, seq_len, dtype=hidden_states.dtype).to(hidden_states.device)
         attention_mask = None
         encoder_outputs = text_encoder.text_model.encoder(
             inputs_embeds=hidden_states,
